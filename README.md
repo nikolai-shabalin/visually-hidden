@@ -100,8 +100,24 @@ _in progress_
 - `sr-only`
 
 ### Селекторы
-- Простой селектор: `.visually-hidden`
+- Простой селектор: 
+  - по классу `.visually-hidden`,  
+  - по атрибуту `[visually-hidden]`
 - Подробный селектор: `.visually-hidden:not(:focus):not(:active)` означает что элемент не будет виден, пока он не в фокусе или не активен.
+
+### Фреймворки
+```jsx
+<ScreenReaderOnly>
+  <Heading as="h2" variant="heading20">Flex</Heading>
+</ScreenReaderOnly>
+```
+
+```jsx
+<Button>
+  <VisuallyHidden>Save</VisuallyHidden>
+</Button>
+```
+
 
 ### Тело
 ```css
@@ -144,6 +160,30 @@ _in progress_
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
+}
+```
+
+```css
+[visually-hidden] {
+  position: fixed !important;
+  /* keep it on viewport */
+  top: 0px !important;
+  left: 0px !important;
+  /* give it non-zero size, VoiceOver on Safari requires at least 2 pixels
+     before allowing buttons to be activated. */
+  width: 4px !important;
+  height: 4px !important;
+  /* visually hide it with overflow and opacity */
+  opacity: 0 !important;
+  overflow: hidden !important;
+  /* remove any margin or padding */
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* ensure no other style sets display to none */
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: none !important;
 }
 ```
 
