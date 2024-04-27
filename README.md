@@ -184,21 +184,21 @@ _in progress_
 ```css
 [visually-hidden] {
   position: fixed !important;
-  /* keep it on viewport */
+  /* сохраните на экране просмотра */
   top: 0px !important;
   left: 0px !important;
-  /* give it non-zero size, VoiceOver on Safari requires at least 2 pixels
-     before allowing buttons to be activated. */
+  /* Задайте ненулевой размер, VoiceOver в Safari требует не менее 2 пикселей
+     прежде чем разрешить активацию кнопок. */
   width: 4px !important;
   height: 4px !important;
-  /* visually hide it with overflow and opacity */
+  /* визуально скрыть его с помощью перелива и непрозрачности */
   opacity: 0 !important;
   overflow: hidden !important;
-  /* remove any margin or padding */
+  /* удалите все поля и подкладки */
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  /* ensure no other style sets display to none */
+  /* Убедитесь, что ни один другой стиль не устанавливает отображение на none */
   display: block !important;
   visibility: visible !important;
   pointer-events: none !important;
