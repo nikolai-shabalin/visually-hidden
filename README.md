@@ -116,6 +116,8 @@ _in progress_
 ### Название классов
 - `visually-hidden`
 - `sr-only`
+- `creen-reader-text`
+- `element-invisible`
 
 ### Селекторы
 - Простой селектор: 
@@ -206,6 +208,38 @@ _in progress_
 ```
 
 ## Другие, абсолютно не рабочие, способы скрытия элементов
+
+- Этот метод не работает с письмом справа налево.
+
+- ```css
+  .element-invisible {
+    text-indent: -9999em;
+    outline: 0;
+  }
+  ```
+  
+- В этом случае Voice Over от Apple не будет читать содержимое элемента, имеющего нулевую высоту.
+
+  ```css
+  .element-invisible {
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+  }
+  ```
+
+- В этом случае, если у вас есть фокусируемый контент внутри позиционированного элемента, страница будет прокручиваться до этого элемента, создавая прыжок для зрячих пользователей. Всё это из-за огромного отрицательного значения `top: -999999em;`.
+
+  ```css
+  .element-invisible {
+    position: absolute;
+    top: -999999em;
+    left: auto;
+    width: 1px;
+    height: 1px;
+    overflow:hidden;
+    }
+  ```
 
 ## Источники
 - [Hiding DOM elements](https://allyjs.io/tutorials/hiding-elements.html)
